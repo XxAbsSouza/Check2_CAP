@@ -19,13 +19,14 @@ public class Mensagem {
 		this.mensagem = mensagem;
 	}
 	
-	//public String getDados() {
-		//String aux = null;
-		//aux += "Nome: "+ nome + "\n";
-		//aux += "Email/Telefone: "+ emailTelefone + "\n";
-		//aux += "Motivo de Contato: "+ motivoContato + "\n";
-		//aux += "Mensagem: "+ mensagem;
-		
-		//return aux;
-	//}
+
+	@Override
+	public String toString() {
+		String aux = null;
+		aux += "Nome: "+ nome + "\n";
+		aux += "Email/Telefone: "+ emailTelefone + "\n";
+		aux += "Motivo de Contato: "+ motivoContato + "\n";
+		aux += "Mensagem: "+ mensagem;
+		return aux;
+	}
 }
