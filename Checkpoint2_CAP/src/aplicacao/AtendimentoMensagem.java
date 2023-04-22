@@ -66,7 +66,7 @@ public class AtendimentoMensagem {
 				int motivoContato = le.nextInt();
 				
 				//Valida��o
-				while (motivoContato < 1 && motivoContato > 2) {
+				while (motivoContato < 1 || motivoContato > 2) {
 					System.out.println("Digite corretamente o motivo do contato (1 - reclama��o / 2 - sugest�o): ");
 					motivoContato = le.nextInt();
 				}
@@ -75,6 +75,8 @@ public class AtendimentoMensagem {
 				
 				System.out.println("Mensagem (texto): ");
 				String texto = le.nextLine();
+				
+				System.out.println();
 				
 				//Guardando os dados do usuario no objeto mensagem
 				if(nome != null){
@@ -113,33 +115,62 @@ public class AtendimentoMensagem {
 				int atendimentoTipoMensagem = le.nextInt();
 				
 				//Valida��o
-				while (atendimentoTipoMensagem != 1 || atendimentoTipoMensagem != 2) {
+				while (atendimentoTipoMensagem < 1 || atendimentoTipoMensagem > 2) {
 					System.out.println("Digite corretamente o tipo de mensagem que ser� respondido (1 - reclama��o / 2 - sugest�o): ");
-					motivoContato = le.nextInt();
+					atendimentoTipoMensagem = le.nextInt();
 				}
 				
 				if(atendimentoTipoMensagem == 1) {
 					//getDados para mostrar as informa��es
+					System.out.println(filaReclamacao.toString());
 					
+					System.out.println("Confirmar a entraga da mensagem da solução do problema? (1 - sim / 2 - não, encaminhar para outro setor): ");
+					int op = le.nextInt();
 					
+					//validação
+					while (op < 1 || op > 2) {
+						System.out.println("Confirmar a entraga da mensagem da solução do problema? (1 - sim / 2 - não, encaminhar para outro setor): ");
+						op = le.nextInt();
+					}
 					
-					filaReclamacao.dequeue();
-					//Encaminhar para outro setor
-					
-					
-					//Confirma��o para solucionar
-					
+					//Encaminhar para outro setor ou confirmar para solucionar
+					if(op == 1) {
+						System.out.println("Enviada resposta para cliente: sua solicitação já foi resolvida. Obrigado!!!");
+						filaReclamacao.dequeue();
+					} else {
+						filaResolucao.enqueue(filaReclamacao.dequeue());
+					}
 				} else {
-					filaSugestao.dequeue();
+					System.out.println(filaSugestao.toString());
+					
+					System.out.println("Confirmar a entraga da mensagem do feedback? (1 - sim / 2 - não, encaminhar para outro setor):");
+					int op = le.nextInt();
+					
+					//validação
+					while (op < 1 || op > 2) {
+						System.out.println("Confirmar a entraga da mensagem da solução do problema? (1 - sim / 2 - não, encaminhar para outro setor): ");
+						op = le.nextInt();
+					}
+					
+					//Encaminhar para outro setor ou confirmar para solucionar
+					if(op == 1) {
+						System.out.println("Enviada resposta para cliente: sua solicitação já foi resolvida. Obrigado!!!");
+						filaSugestao.dequeue();
+					} else {
+						filaResolucao.enqueue(filaSugestao.dequeue());
+					}
+				
 				}
 				
 				break;
 			
 			case 3:
-				
+				System.out.println(filaResolucao.dequeue());
+				System.out.println("Enviada resposta para cliente: sua solicitação já foi resolvida. Obrigado!!!");
 				break;
 
 			default:
+				System.out.println("Opção inválida");
 				break;
 			}
 			
