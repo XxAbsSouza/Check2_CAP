@@ -42,4 +42,13 @@ public class FilaMensagens {
 		return elem;
 	}
 	
+	@Override
+	public String toString() {
+		Mensagem elem = dados[ini];
+		String aux = null;
+		aux += elem;
+		
+		return aux;
+	}
+	
 }
