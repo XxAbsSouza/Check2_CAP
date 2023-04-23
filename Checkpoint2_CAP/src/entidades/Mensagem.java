@@ -22,8 +22,8 @@ public class Mensagem {
 
 	@Override
 	public String toString() {
-		String aux = null;
-		aux += "Nome: "+ nome + "\n";
+		String aux = "";
+		aux = "Nome: "+ nome + "\n";
 		aux += "Email/Telefone: "+ emailTelefone + "\n";
 		aux += "Motivo de Contato: "+ motivoContato + "\n";
 		aux += "Mensagem: "+ mensagem;
