@@ -103,7 +103,11 @@ public class AtendimentoMensagem {
 					break;
 
 				case 2:
-
+				//conferindo se tem algo nas filas
+				if (filaReclamacao.isEmpty() && filaSugestao.isEmpty()) {
+					System.out.println("Não há mensagens para atender.");
+					break;
+				}
 					// Perguntar qual fila vai querer atender
 					System.out.println(
 							"Escolha o tipo de mensagem que ser� respondido (1 - reclama��o / 2 - sugest�o): ");
@@ -167,6 +171,11 @@ public class AtendimentoMensagem {
 					break;
 
 				case 3:
+				//conferindo se há algo na fila resolução
+				if (filaResolucao.isEmpty()) {
+					System.out.println("Não há mensagens para encaminhar.");
+					break;
+				}
 					System.out.println(filaResolucao.dequeue());
 					System.out.println("Enviada resposta para cliente: sua solicitação já foi resolvida. Obrigado!!!");
 					break;
