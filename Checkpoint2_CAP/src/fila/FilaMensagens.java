@@ -45,7 +45,7 @@ public class FilaMensagens {
 	@Override
 	public String toString() {
 		Mensagem elem = dados[ini];
-		String aux = null;
+		String aux = "";
 		aux += elem;
 		
 		return aux;
